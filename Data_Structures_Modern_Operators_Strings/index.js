@@ -44,19 +44,8 @@ const game = {
 // Your tasks:
 // 1. Create one player array for each team (variables 'players1' and
 // 'players2')
-const players1 = [
-  "Neuer",
-  "Pavard",
-  "Martinez",
-  "Alaba",
-  "Davies",
-  "Kimmich",
-  "Goretzka",
-  "Coman",
-  "Muller",
-  "Gnarby",
-  "Lewandowski",
-];
+const players1 = [...game.players[0]];
+// console.log(players1);
 const players2 = [
   "Burki",
   "Schulz",
@@ -92,7 +81,11 @@ let { team1, x: draw, team2 } = game.odds;
 // number of goals that were scored in total (number of player names passed in)
 const printGoals = function (...players) {
   players.forEach((player) => console.log(player));
-  console.log(`${players.length} goals were scored`);
+  let goal = 0;
+  players.forEach((player) => {
+    goal += game.scored.filter((name) => name === player).length;
+  });
+  console.log("total num number goal", goal);
 };
 // 7. The team with the lower odd is more likely to win. Print to the console which
 // team is more likely to win, without using an if/else statement or the ternary
